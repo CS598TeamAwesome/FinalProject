@@ -1,0 +1,8 @@
+{
+    "name": "FinalProjectServer",
+    "description": "Sever for the final project",
+    "private": true,
+    "dependencies": {
+        "express": "4.0.0"
+    }
+}
