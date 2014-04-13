@@ -1,0 +1,17 @@
+{
+    "app": {
+        "name": "Visual Search",
+        "host": "localhost",
+        "sessionKey": "VISUALSEARCH",
+        "sessionSecret": "VSFrontEndSessionSecretKeyHereChangeForProduction",
+        "port": 3000,
+        "ssl": false
+    },
+    "Log": {
+        "app_name": "visualsearch",
+        "type": "rotating-file",
+        "path": "logs/http.log",
+        "period": "1d",
+        "count": 3
+    }
+}

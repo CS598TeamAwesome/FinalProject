@@ -1,0 +1,4 @@
+{ 
+	"name" : "Aladdin Front End Web Server",
+	"main" : "app.coffee"
+}

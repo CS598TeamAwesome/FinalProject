@@ -5,3 +5,4 @@ app = require './app'
 
 app.setup server
 
+server.listen config.app.port
