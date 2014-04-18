@@ -1,4 +1,4 @@
 { 
-	"name" : "Aladdin Front End Web Server",
+	"name" : "Final Project web server routes",
 	"main" : "app.coffee"
 }
