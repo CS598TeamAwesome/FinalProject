@@ -1,6 +1,9 @@
 rpc = require '../rpc'
 
 module.exports.setup = (server) ->
+    server.route('/').get (req, res, next) ->
+        res.render 'index'
+
     server.route('/api/:function')
     .get (req, res, next) ->
         func = req.params.function
