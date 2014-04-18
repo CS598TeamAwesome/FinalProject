@@ -15,7 +15,9 @@ exports.requestRpc = (func, args, user, cb) ->
 
             targetFunction argValues...
         when func is 'listRemoteProcedures'
-            procs = name: proc, parameters: (getParamNames def)[...-1] for own proc, def of rpcDefinition when typeof def is 'function'
+            procs = for own proc, def of rpcDefinition when typeof def is 'function'
+                name: proc
+                parameters: (p for p in (getParamNames def) when p isnt 'cb')
             cb null, procs
         else
             throw new Error "No such procedure '#{func}'"
