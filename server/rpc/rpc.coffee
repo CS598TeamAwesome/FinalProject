@@ -9,7 +9,7 @@ exports.requestRpc = (func, args, user, cb) ->
             argValues = for param in paramNames[...-1]
                             if param of args
                                  args[param]
-                            else if param isnt 'cb'
+                            else
                                 throw new Error "Missing argument for paramater '#{param}' of procedure '#{func}'"
             argValues.push cb
 
