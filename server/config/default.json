@@ -5,7 +5,8 @@
         "sessionKey": "VISUALSEARCH",
         "sessionSecret": "VSFrontEndSessionSecretKeyHereChangeForProduction",
         "port": 3000,
-        "ssl": false
+        "ssl": false,
+        "public": "../client/build"
     },
     "Log": {
         "app_name": "visualsearch",
