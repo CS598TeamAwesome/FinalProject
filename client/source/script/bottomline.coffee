@@ -29,5 +29,5 @@ require.config
             exports: 'Typeahead'
 
 require ['knockout', 'viewModel', 'routes', 'domready'], (ko, viewModel, routes, domReady) ->
-            domReady () -> alert 'AAA'
+    domReady () -> alert 'AAA'
 
