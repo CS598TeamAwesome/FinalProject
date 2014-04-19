@@ -6,11 +6,13 @@ exports.requestRpc = (func, args, user, cb) ->
             targetFunction = rpcDefinition[func]
             paramNames = getParamNames targetFunction
 
-            argValues = for param in paramNames when param isnt 'cb'
-                            if param of args
-                                 args[param]
-                            else
-                                throw new Error "Missing argument for paramater '#{param}' of procedure '#{func}'"
+            getArg = (param) ->
+                if param of args
+                    args[param]
+                else
+                    throw new Error "Missing argument for paramater '#{param}' of procedure '#{func}'"
+
+            argValues = getArg param for param in paramNames when param isnt 'cb'
             argValues.push cb
 
             targetFunction argValues...
