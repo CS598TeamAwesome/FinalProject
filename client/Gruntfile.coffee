@@ -24,6 +24,9 @@ module.exports = (grunt) ->
                     value: 4
                 max_line_length:
                     level: 'ignore'
+                no_trailing_whitespace:
+                    level: 'ignore'
+
         coffee:
             dev:
                 options:
