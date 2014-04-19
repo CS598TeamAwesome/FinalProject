@@ -1,15 +1,15 @@
 define ['jquery'], ($) ->
-    dispatch = (url, callstring, cb) ->
+    dispatch = (url, callString, cb) ->
         $.ajax
             url: url
             data: callString
             type: 'POST'
             dataType: 'json'
             success: cb
-            error rpc.error
+            error: rpc.error
 
     makeRpcCall = (func, args..., cb) ->
-        callString = args.reduceRight (cs,a) -> cs + '&' + a
+        callString = args.reduceRight ((cs,a) -> cs + '&' + a), ''
         dispatch "#{rpc.prefix}/#{func}",callString,cb
 
     rpc =
@@ -20,7 +20,7 @@ define ['jquery'], ($) ->
                 for proc in procInfo
                     rpc[proc.name] = (args..., cb) ->
                         encodedArgs = param + '=' + encodeURIComponent JSON.stringify args[i] for param, i in proc.parameters
-                        makeRpcCall func, encodedArgs, cb
+                        makeRpcCall proc.name, encodedArgs, cb
 
                 cb()
 
