@@ -38,6 +38,10 @@ module.exports = (grunt) ->
                         expand: yes
                         src: 'bower_components/**/*.*'
                         dest: 'build/'
+                    ,
+                        expand: yes
+                        src: 'source/**/*.*'
+                        dest: 'build/'
                 ]
 
 
