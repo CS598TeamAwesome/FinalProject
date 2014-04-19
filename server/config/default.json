@@ -1,6 +1,6 @@
 {
     "app": {
-        "name": "Visual Search",
+        "name": "Bottom Line",
         "host": "localhost",
         "sessionKey": "VISUALSEARCH",
         "sessionSecret": "VSFrontEndSessionSecretKeyHereChangeForProduction",
@@ -8,8 +8,8 @@
         "ssl": false,
         "public": "../client/build"
     },
-    "Log": {
-        "app_name": "visualsearch",
+    "log": {
+        "app_name": "bottomline",
         "type": "rotating-file",
         "path": "logs/http.log",
         "period": "1d",
