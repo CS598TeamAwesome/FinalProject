@@ -1,28 +1,19 @@
 module.exports = (grunt) ->
     grunt.initConfig
         pkg: grunt.file.readJSON 'package.json'
-        env:
-            dev:
-                NODE_ENV: 'DEVELOPMENT'
-            prd:
-                NODE_ENV: 'PRODUCTION'
-        preprocess:
-            dev:
-                src: 'build/index.html'
-                dest: 'build/index.html'
-                options:
-                    context:
-                        cssFiles: ''
-            prd:
-                src: 'build/index.html'
-                dest: 'build/index.html'
         jade:
             prd:
+                options:
+                    data:
+                        production: yes
                 files:
                     'build/index.html': ['source/index.jade']
             dev:
                 options:
                     pretty: yes
+                    data:
+                        production: no
+                        css: []
                 files:
                     'build/index.html': ['source/index.jade']
 
@@ -88,9 +79,9 @@ module.exports = (grunt) ->
 
     grunt.registerTask 'listcss', 'creates a variable which holds all of the css file urls', (target) ->
         files = ['source/**/*.styl']
-        cssList = ('<link rel="stylesheet" href="' + file.replace('source/','').replace('styl','css') + '">' for file in grunt.file.expand(files))
-        grunt.config.set 'preprocess.dev.options.context.cssFiles', cssList.join('\r\n')
+        cssList = (file.replace('source/','').replace('styl','css') for file in grunt.file.expand(files))
+        grunt.config.set 'jade.dev.options.data.css', cssList
 
     grunt.registerTask 'default', ['install', 'coffeelint']
     grunt.registerTask 'bower', ['bower']
-    grunt.registerTask 'dev', ['env:dev', 'clean', 'listcss', 'copy:dev', 'jade:dev', 'coffeelint', 'coffee:dev', 'stylus:dev', 'preprocess:dev']
+    grunt.registerTask 'dev', ['clean', 'listcss', 'copy:dev', 'jade:dev', 'coffeelint', 'coffee:dev', 'stylus:dev']
