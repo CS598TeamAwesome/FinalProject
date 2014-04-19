@@ -28,6 +28,6 @@ require.config
             deps: ['jquery', 'bloodhound']
             exports: 'Typeahead'
 
-require ['knockout', 'viewModel', 'routes', 'domready'], (ko, rpc, viewModel, routes, domReady) ->
+require ['knockout', 'viewModel', 'routes', 'domready'], (ko, viewModel, routes, domReady) ->
             domReady () -> alert 'AAA'
 
