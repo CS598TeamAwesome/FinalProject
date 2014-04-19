@@ -1,7 +1,16 @@
 doctype html
 head
-    script(src='script/require.js' data-main='script/bottomline')
-    link(href='bower_components/bootstrap/dist/css/bootstrap.min.css' rel='stylesheet')
+    title Bottom Line Visual Search
+    script(src='script/require.js', data-main='script/bottomline')
+
+    // @if NODE_ENV='PRODUCTION'
+    link(href='bootstrap.min.css', media='all', rel='stylesheet')
+    link(href='bottomline.min.css', rel='stylesheet')
+    // @endif
+    // @if NODE_ENV='DEVELOPMENT'
+    link(href='bower_components/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
+    // @echo cssFiles
+    // @endif
 body
     include components/alert/alert
     include components/search/search
