@@ -27,10 +27,17 @@ module.exports = (grunt) ->
         copy:
             dev:
                 files: [
-                    expand: yes
-                    cwd: 'source'
-                    src: '**/*.jade'
-                    dest: 'build/'
+                        expand: yes
+                        cwd: 'source'
+                        src: '**/*.jade'
+                        dest: 'build/'
+                    ,
+                        src: 'bower_components/requirejs/require.js'
+                        dest: 'build/script/require.js'
+                    ,
+                        expand: yes
+                        src: 'bower_components/**/*.*'
+                        dest: 'build/'
                 ]
 
 
