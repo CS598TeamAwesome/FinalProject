@@ -4,7 +4,7 @@ server = express()
 config = require 'config'
 app = require './app'
 
-server.use bodyParser();
+server.use bodyParser()
 
 server.use express.static config.app.public
 
