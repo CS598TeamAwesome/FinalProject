@@ -1,0 +1,16 @@
+.alert.alert-danger.alert-dismissable(data-bind='with: alert, visible: alert.visible')
+    button.close(type='button', data-dismiss='alert', aria-hidden='true')&times;
+    strong Oops!
+    span Something when wrong when trying to contact the server.
+    a.alert-link Click here to show the full error mesage.
+    .fullError(data-bind='with: error, visible: showFullError')
+        strong(data-bind='text: title')
+        | :
+        span(data-bind='text: message')
+        | (
+        span(data-bind='text: code')
+        | )
+        br
+        div(data-bind='foreach: trace')
+            span(data-bind='text: $data')
+            br
