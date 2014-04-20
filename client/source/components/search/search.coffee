@@ -8,4 +8,7 @@ define ['jquery', 'knockout'], ($, ko) ->
             @searchText ''
             @visible yes
 
+        finish: () =>
+            @visible no
+
     new SearchPage()
