@@ -11,6 +11,11 @@ define ['crossroads', 'hasher', 'viewModel'], (crossroads, hasher, vm) ->
         vm.newobject.activate()
         vm.navbar.current 'add'
 
+    crossroads.addRoute 'profile', () ->
+        vm.finishCurrent()
+        vm.profile.activate()
+        vm.navbar.current 'profile'
+
     parseHash = (newHash, oldHash) -> crossroads.parse newHash
 
     hasher.initialized.add parseHash
