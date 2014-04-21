@@ -8,7 +8,7 @@ module.exports.setup = (server) ->
         (passport.authenticate 'local', (err, user, info) ->
             switch
                 when err? then next err
-                when not user? then res.redirect '/login'
+                when not user? then res.redirect '/#/profile'
                 else req.logIn user, (err) -> if err? then next err else res.redirect '/'
         ) req, res, next
 
@@ -22,3 +22,10 @@ module.exports.setup = (server) ->
                         when err? then done err
                         when not success then done null, false, message: 'Incorrect password.'
                         else done null, user
+
+module.exports.ensure = (req, res, next) ->
+    if req.isAuthenticated()
+        next()
+    else
+        req.session.redirectUrl = req.url if req.session?
+        res.redirect '/#/profile'
