@@ -1,0 +1,18 @@
+doctype html
+head
+    title Bottom Line Visual Search
+    script(src='script/require.js', data-main='script/bottomline')
+
+    if production
+        link(href='bootstrap.min.css', media='all', rel='stylesheet')
+        link(href='bottomline.min.css', rel='stylesheet')
+    else
+        link(href='bower_components/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
+        each url in css
+            link(href=url, rel='stylesheet')
+body
+    include components/alert/alert
+    include components/navbar/navbar_unauth
+    include components/search/search
+    include components/object/newobject
+    include components/profile/login
