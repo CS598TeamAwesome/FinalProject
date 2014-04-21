@@ -1,0 +1,9 @@
+.profile(data-bind='with: profile, visible: profile.visible')
+    .page-header
+        h1 Log In
+    input.form-control(type='text', placeholder='EMail', data-bind='value: email')
+    input.form-control(type='password', placeholder='Password', data-bind='value: password')
+
+    .button-box
+        button.btn.btn-primary.btn(type='button')
+                | Log In
