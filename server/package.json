@@ -6,6 +6,10 @@
         "express": "~4.0.0",
         "config": "~0.4.33",
         "body-parser": "~1.0.2",
-        "bunyan": "~0.21.3"
+        "bunyan": "~0.21.3",
+        "mongoose": "~3.6.13",
+        "bcrypt": "^0.7.7",
+        "passport": "~0.1.17",
+        "passport-local": "~0.1.6"
     }
 }
