@@ -6,16 +6,26 @@ module.exports = (grunt) ->
                 options:
                     data:
                         production: yes
-                files:
-                    'build/index.html': ['source/index.jade']
+                files: [
+                        expand: yes
+                        cwd: 'source'
+                        src: '*.jade'
+                        dest: 'build/'
+                        ext: '.html'
+                ]
             dev:
                 options:
                     pretty: yes
                     data:
                         production: no
                         css: []
-                files:
-                    'build/index.html': ['source/index.jade']
+                files: [
+                        expand: yes
+                        cwd: 'source'
+                        src: '*.jade'
+                        dest: 'build/'
+                        ext: '.html'
+                ]
 
         coffeelint:
             all: ['Gruntfile.coffee', 'source/**/*.coffee']
@@ -50,7 +60,7 @@ module.exports = (grunt) ->
                 files: [
                         expand: yes
                         cwd: 'source'
-                        src: ['**/*.styl']
+                        src: '**/*.styl'
                         dest: 'build/'
                         ext: '.css'
                 ]
