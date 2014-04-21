@@ -1,0 +1,4 @@
+{
+	"name" : "Bottom line web server model",
+	"main" : "model.coffee"
+}
