@@ -1,5 +1,9 @@
 api = require './api'
 auth = require './auth'
+config = require 'config'
+path = require 'path'
+
+publicDir = path.resolve config.app.public
 
 module.exports.setup = (server) ->
     auth.setup(server)
@@ -7,7 +11,13 @@ module.exports.setup = (server) ->
 
     server.route('/')
     .get (req, res, next) ->
-        res.redirect '/unauth.html'
+        if req.user?
+            switch req.user.rank
+                when 'User' then res.sendfile publicDir + '/user.html'
+                when 'Modifier' then res.sendfile publicDir + '/modifier.html'
+                when 'Administrator' then res.sendfile publicDir + '/administrator.html'
+        else
+            res.sendfile publicDir + '/unauth.html'
 
      server.all /// ^ (
         (?!\/
