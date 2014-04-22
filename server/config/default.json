@@ -14,5 +14,8 @@
         "path": "logs/http.log",
         "period": "1d",
         "count": 3
+    },
+    "db": {
+        "connectionString": "mongodb://localhost/bottomline"
     }
 }
