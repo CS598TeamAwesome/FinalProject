@@ -1,5 +1,7 @@
 express = require 'express'
 bodyParser = require 'body-parser'
+cookieParser = require 'cookie-parser'
+session = require 'express-session'
 server = express()
 config = require 'config'
 app = require './app'
@@ -26,6 +28,8 @@ server.use (req, res, next) ->
 
 server.use bodyParser()
 
+server.use cookieParser()
+server.use session secret: config.app.sessionSecret
 server.use express.static config.app.public
 
 app.setup server
