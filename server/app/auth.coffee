@@ -10,13 +10,13 @@ module.exports.setup = (server) ->
     .post (req, res, next) ->
         (passport.authenticate 'local', (err, user, info) ->
             switch
-                when err? then next err
+                when err? then res.redirect '/#/profile'
                 when not user then res.redirect '/#/profile'
-                else req.logIn user, (err) -> if err? then next err else res.redirect '/'
+                else req.logIn user, (err) -> if err? then res.redirect '/#/profile' else res.redirect '/'
         ) req, res, next
 
     server.route('/logout')
-    .get (req, res, next) ->
+    .post (req, res, next) ->
         req.session.destroy()
         req.logout()
         res.redirect '/'
