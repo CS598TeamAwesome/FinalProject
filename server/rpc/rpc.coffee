@@ -12,10 +12,8 @@ exports.requestRpc = (func, args, user, cb) ->
                 else
                     throw new Error "Missing argument for paramater '#{param}' of procedure '#{func}'"
 
-            argValues = getArg param for param in paramNames when param isnt 'cb'
-            argValues.push cb
-
-            targetFunction argValues...
+            argValues = (getArg param for param in paramNames when param isnt 'cb') ? []
+            targetFunction.call user,argValues...,cb
         when func is 'listRemoteProcedures'
             procs = for own proc, def of rpcDefinition when typeof def is 'function'
                 name: proc
