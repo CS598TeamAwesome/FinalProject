@@ -20,4 +20,3 @@ define ['crossroads', 'hasher', 'viewModel'], (crossroads, hasher, vm) ->
 
     hasher.initialized.add parseHash
     hasher.changed.add parseHash
-    hasher.init()
