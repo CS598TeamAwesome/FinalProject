@@ -7,27 +7,28 @@ define [
     'components/profile/profile'
 ],
 (rpc, alert, search, navbar, newobject, profile) ->
-    vm =
-        init: (cb) ->
+    class ViewModel
+        init: (cb) =>
             rpc.prefix = 'api'
-            rpc.load () ->
-                rpc.getUser (u) ->
-                    vm.user = u
-                    navbar.init()
+            rpc.load () =>
+                rpc.getUser (u) =>
+                    @user = u
+                    @profile = profile(u)
+                    @navbar.init()
                     cb?()
 
-        finishCurrent: () ->
+        finishCurrent: () =>
             switch
-                when search.visible() then search.finish()
-                when newobject.visible() then newobject.finish()
-                when profile.visible() then profile.finish()
+                when @search?.visible() then @search?.finish()
+                when @newobject?.visible() then @newobject?.finish()
+                when @profile?.visible() then @profile?.finish()
 
 
         alert: alert
         search: search
         navbar: navbar
         newobject: newobject
-        profile: profile
+        profile: null
         user: null
 
-    vm
+    new ViewModel()
