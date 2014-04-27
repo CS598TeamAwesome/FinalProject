@@ -1,2 +1,2 @@
 module.exports =
-    add: (a, b, cb) -> cb null, (a+b)
+    getUser: (cb) -> cb undefined,this
