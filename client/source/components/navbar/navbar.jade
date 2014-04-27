@@ -15,4 +15,5 @@
         li#profile
             a
                 span.glyphicon.glyphicon-user
-                | Profile
+                span(data-bind='text: $root.user.name')
+
