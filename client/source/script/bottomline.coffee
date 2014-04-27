@@ -28,9 +28,10 @@ require.config
             deps: ['jquery', 'bloodhound']
             exports: 'Typeahead'
 
-require ['jquery', 'knockout', 'viewModel', 'routes', 'domready'], ($, ko, viewModel, routes, domReady) ->
+require ['jquery', 'knockout', 'viewModel', 'routes', 'hasher', 'domready'], ($, ko, viewModel, routes, hasher, domReady) ->
     domReady () ->
         viewModel.init () ->
+            hasher.init()
             ko.applyBindings viewModel
             ($ 'body').show()
 
