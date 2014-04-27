@@ -1,0 +1,66 @@
+.profile(data-bind='with: profile, visible: profile.visible')
+    .page-header
+        h1
+            span(data-bind='text: $root.user.name')
+            | &nbsp;&nbsp;
+            small(data-bind='text: $root.user.rank')
+
+    ul#tabs.nav.nav-tabs
+        li.active
+            a(data-toggle='tab', href='#my') My Account
+        li
+            a(data-toggle='tab', href='#adduser') Add User
+        li
+            a(data-toggle='tab', href='#history') History
+
+    .tab-content
+        #my.tab-pane.active
+            .mailinfo
+                strong Email
+                | &nbsp; &nbsp;
+                span(data-bind='text: $root.user.email')
+
+            .panel.panel-primary
+                .panel-heading
+                    h3.panel-title Change Password
+                .panel-body
+                    form(role='form')
+                        .form-group
+                            label(for='cpOldPass') Current Password
+                            input#cpOldPass.form-control(type='password', placeholder='Current Password')
+                        .form-group
+                            label(for='cpNewPass') New Password
+                            input#cpNewPass.form-control(type='password', placeholder='New Password')
+                            input#cpNewPassV.form-control(type='password', placeholder='Verify Password')
+                .panel-footer
+                    button.btn.btn-primary(type='button') Change
+
+
+            .logout
+                form(role='form', method='post', action='logout')
+                    button.btn.btn-danger.btn-lg(type='submit') Logout
+
+        #adduser.tab-pane
+            .panel.panel-primary
+                .panel-heading
+                    h3.panel-title User Information
+                .panel-body
+                    form(role='form')
+                        .form-group
+                            label(for='nuName') Full Name
+                            input#nuName.form-control(type='text', placeholder='Name')
+                        .form-group
+                            label(for='nuEmail') Email Address
+                            input#nuEmail.form-control(type='email', placeholder='Email')
+                        .form-group
+                            label Password
+                            input#nuPass.form-control(type='password', placeholder='Password will be set automatically' disabled)
+                        .form-group
+                            label(for='nuType') Rank
+                            select#nuType.form-control
+                                option(value='User') User
+                                option(value='Modifier') Modifier
+                                option(value='Administrator') Administrator
+                .panel-footer
+                    button.btn.btn-primary(type='button') Add
+        #history.tab-pane
