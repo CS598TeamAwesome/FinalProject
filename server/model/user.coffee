@@ -1,5 +1,6 @@
 mongoose = require 'mongoose'
 Schema = mongoose.Schema
+bcrypt = require  'bcrypt-nodejs'
 
 UserSchema = new Schema
     name: String
@@ -7,7 +8,7 @@ UserSchema = new Schema
     password: String
     rank: { type: String, enum: ['User', 'Modifier', 'Administrator'] }
 
-UserSchema.methods.authenticate = (password, cb) -> cb null, true
+UserSchema.methods.authenticate = (password, cb) -> bcrypt.compare password, this.password, cb
 
 User = mongoose.model 'User', UserSchema
 
