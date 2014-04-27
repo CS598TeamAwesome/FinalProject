@@ -11,8 +11,10 @@ define [
         init: (cb) ->
             rpc.prefix = 'api'
             rpc.load () ->
-                navbar.init()
-                cb?()
+                rpc.getUser (u) ->
+                    vm.user = u
+                    navbar.init()
+                    cb?()
 
         finishCurrent: () ->
             switch
