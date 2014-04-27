@@ -12,7 +12,7 @@ module.exports.setup = (server) ->
             switch
                 when err? then res.redirect '/#/profile'
                 when not user then res.redirect '/#/profile'
-                else req.logIn user, (err) -> if err? then res.redirect '/#/profile' else res.redirect '/'
+                else req.logIn user, (err) -> res.redirect '/#/profile'
         ) req, res, next
 
     server.route('/logout')
