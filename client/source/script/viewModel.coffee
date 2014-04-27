@@ -15,6 +15,7 @@ define [
                     @user = u
                     @profile = profile(u)
                     @navbar.init()
+                    @profile.init?()
                     cb?()
 
         finishCurrent: () =>
