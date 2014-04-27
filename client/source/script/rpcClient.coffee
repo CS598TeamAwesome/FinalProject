@@ -18,9 +18,10 @@ define ['jquery'], ($) ->
         load: (cb) ->
             makeRpcCall 'listRemoteProcedures', (procInfo) ->
                 for proc in procInfo
-                    rpc[proc.name] = (args..., cb) ->
-                        encodedArgs = (param + '=' + encodeURIComponent JSON.stringify args[i] for param, i in proc.parameters)
-                        makeRpcCall proc.name, encodedArgs..., cb
+                    do (proc) ->
+                        rpc[proc.name] = (args..., cb) ->
+                            encodedArgs = (param + '=' + encodeURIComponent JSON.stringify args[i] for param, i in proc.parameters)
+                            makeRpcCall proc.name, encodedArgs..., cb
 
                 cb()
 
