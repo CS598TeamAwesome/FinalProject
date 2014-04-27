@@ -6,13 +6,13 @@ module.exports.setup = (server) ->
         func = req.params.function
         args = parseArgs req.query
 
-        callRpc func, args, null, res
+        callRpc func, args, req.user ? {}, res
 
     .post (req, res, next) ->
         func = req.params.function
         args = parseArgs req.body
 
-        callRpc func, args, null, res
+        callRpc func, args, req.user ? {}, res
 
 parseArgs = (source) ->
     args = {}
@@ -26,7 +26,7 @@ callRpc = (func, args, user, res) ->
         rpcError err, res
 
 rpcError = (err, res) ->
-    errString = err.stack
+    errString = err.stack ? err.message
     errNameEnd = errString.indexOf ':'
 
     errName = errString[...errNameEnd].trim()
