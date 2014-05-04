@@ -32,9 +32,13 @@ module.exports.setup = (server) ->
                         when not success then done null, false, message: 'Incorrect password.'
                         else done null, user
 
-    passport.serializeUser (user, done) -> done null, user
+    passport.serializeUser (user, done) ->
+        delete user.password
+        done null, user
 
-    passport.deserializeUser (user, done) -> done null, user
+    passport.deserializeUser (user, done) ->
+        model.users.findOne email: user.email, (err, user) ->
+            if err? then done err else done null, user
 
 module.exports.ensure = (req, res, next) ->
     if req.isAuthenticated()
