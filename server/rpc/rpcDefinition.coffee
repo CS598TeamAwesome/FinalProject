@@ -14,3 +14,18 @@ module.exports =
         else
             cb new Error 'Permission Denied'
 
+    setPassword: (user, oldpw, newpw, cb) ->
+        if this.id is user.id
+            this.authenticate oldpw, (err, res) ->
+                switch
+                    when err? then cb err
+                    when res
+                        this.setPassword newpw, (err) ->
+                            if err?
+                                cb err
+                            else
+                                this.save cb
+                    else cb new Error 'Incorrect password'
+
+
+
