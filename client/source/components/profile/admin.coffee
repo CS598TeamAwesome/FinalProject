@@ -8,10 +8,15 @@ define ['jquery','knockout', 'bootstrap'], ($, ko) ->
         finish: () =>
             @visible false
 
-        init: () ->
-            $('#tabs a').click (e) ->
-                e.preventDefault()
-                $(this).tab 'show'
+        init: (user) ->
+            $('#changepw').click (e) ->
+                newPass = $('#cpNewPass').val()
+                newPassV = $('#cpNewPassV').val()
+                oldPass = $('#cpOldPass').val()
+
+                if (newPass isnt '') and (newPassV isnt '') and (oldPass isnt '')
+                    (user.setPassword oldPass, newPass) if newPass is newPassV
+
 
 
     new Administrator()
