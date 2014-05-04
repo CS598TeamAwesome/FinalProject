@@ -1,5 +1,6 @@
 api = require './api'
 auth = require './auth'
+upload = require './upload'
 config = require 'config'
 path = require 'path'
 
@@ -8,6 +9,7 @@ publicDir = path.resolve config.app.public
 module.exports.setup = (server) ->
     auth.setup(server)
     api.setup(server)
+    upload.setup(server)
 
     server.route('/')
     .get (req, res, next) ->
