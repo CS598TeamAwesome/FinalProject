@@ -4,8 +4,9 @@
             small Visual Search Engine
 
     h5 Start typing for a list of objects in the system, or click the camera to upload your own image and see what we find
-    .input-group.input-group-lg
-        input#searchBox.form-control(type='text' placeholder='Type for suggestions')
-        span.input-group-btn
-            button#searchButton.btn.btn-primary(type='button')
-                span.glyphicon.glyphicon-camera
+    form(action='/upload', method='post' enctype='multipart/form-data')
+        .input-group.input-group-lg
+            input#searchBox.form-control(type='file', placeholder='Type for suggestions', name='image')
+            span.input-group-btn
+                button#searchButton.btn.btn-primary(type='submit')
+                    span.glyphicon.glyphicon-camera
