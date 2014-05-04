@@ -13,9 +13,12 @@ define [
             rpc.load () =>
                 rpc.getUser (u) =>
                     @user = u
+
+                    @user.setPassword = (oldpw, newpw, cb) -> rpc.setPassword(u, oldpw, newpw, cb)
+
                     @profile = profile(u)
                     @navbar.init()
-                    @profile.init?()
+                    @profile.init?(u)
                     cb?()
 
         finishCurrent: () =>
