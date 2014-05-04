@@ -5,9 +5,9 @@ define [
 ], (login, user, admin) ->
     page = (u) ->
         switch u.rank
-            when 'user' then user
-            when 'modifier' then user
-            when 'administrator' then admin
+            when 'User' then user
+            when 'Modifier' then user
+            when 'Administrator' then admin
             else login
 
     page
