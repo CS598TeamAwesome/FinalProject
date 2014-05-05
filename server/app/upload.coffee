@@ -8,6 +8,7 @@ module.exports.setup = (server) ->
     .post  multipart(), (req, res, next) ->
         uploadFile req.files, (err, results) ->
             if err?
+                console.log err
                 res.redirect '/'
             else
                 resStr = JSON.stringify results
@@ -17,6 +18,7 @@ module.exports.setup = (server) ->
 
 # call search executable with file.image.path
 uploadFile = (file, cb) ->
-    fs.readFile 'results.txt', (err, data) ->
-        lines = (data.toString().split '\n') if not err?
-        cb err, lines
+    exec '/home/cs598teamawesome/FinalProject/executables/SendQuery', file.image.path, cwd: '/home/cs598teamawesome/FinalProject/executables', (err, stdout, stdin) ->
+        linesRaw = (stdout.toString().split '\n') if not err?
+        lines = l.replace 'FinalProject/','' for l in lines if not err?
+        cb err,lines
