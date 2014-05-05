@@ -1,0 +1,3 @@
+.results(data-bind='with: results, visible: results.visible')
+    .resultsDisplay(data-bind='foreach: results')
+        img(data-bind='attr: { src: $data }', width='240')
