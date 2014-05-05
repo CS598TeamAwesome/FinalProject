@@ -22,5 +22,5 @@ uploadFile = (file, cb) ->
     exec '/home/cs598teamawesome/FinalProject/executables/SendQuery ' + file.image.path, { cwd: '/home/cs598teamawesome/FinalProject/executables' }, (err, stdout, stdin) ->
         console.log stdout.toString()
         linesRaw = (stdout.toString().split '\r\n') if not err?
-        lines = l.replace '~/FinalProject/','' for l in lines if not err?
+        lines = (l.replace('~/FinalProject/','') for l in lines if not err?)
         cb err,lines
