@@ -27,6 +27,7 @@ define [
                 when @search?.visible() then @search?.finish()
                 when @newobject?.visible() then @newobject?.finish()
                 when @profile?.visible() then @profile?.finish()
+                when @results?.visible() then @results?.finish()
 
 
         alert: alert
