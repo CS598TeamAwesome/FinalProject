@@ -5,8 +5,9 @@ define [
     'components/navbar/navbar'
     'components/object/newobject'
     'components/profile/profile'
+    'components/results/results'
 ],
-(rpc, alert, search, navbar, newobject, profile) ->
+(rpc, alert, search, navbar, newobject, profile, results) ->
     class ViewModel
         init: (cb) =>
             rpc.prefix = 'api'
@@ -32,6 +33,7 @@ define [
         search: search
         navbar: navbar
         newobject: newobject
+        results: results
         profile: null
         user: null
 
